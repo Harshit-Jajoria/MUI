@@ -1,4 +1,4 @@
-import { Mail, Notifications, Pets } from "@mui/icons-material";
+import { Face6, Mail, Notifications } from '@mui/icons-material';
 import {
   AppBar,
   Avatar,
@@ -10,53 +10,63 @@ import {
   styled,
   Toolbar,
   Typography,
-} from "@mui/material";
-import React, { useState } from "react";
+} from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import React, { useState } from 'react';
 
 const StyledToolbar = styled(Toolbar)({
-  display: "flex",
-  justifyContent: "space-between",
-  
-
+  display: 'flex',
+  justifyContent: 'space-between',
 });
 
-const Search = styled("div")(({ theme }) => ({
-  backgroundColor: "white",
-  padding: "0 10px",
+const Search = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: '0 10px',
+  backgroundColor: 'white',
   borderRadius: theme.shape.borderRadius,
-  width: "40%",
+  width: '40%',
+  height: '40%',
 }));
 
 const Icons = styled(Box)(({ theme }) => ({
-  display: "none",
-  alignItems: "center",
-  gap: "20px",
-  [theme.breakpoints.up("sm")]: {
-    display: "flex",
-  },
+  display: 'flex',
+  alignItems: 'center',
+  gap: '20px',
+  // [theme.breakpoints.up('sm')]: {
+  //   display: 'flex',
+  // },
 }));
 
 const UserBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: "10px",
-  [theme.breakpoints.up("sm")]: {
-    display: "none",
-  },
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+  // [theme.breakpoints.up('sm')]: {
+  //   display: 'none',
+  // },
 }));
 const Navbar = () => {
   const [isopen, issetOpen] = useState(false);
   return (
-    <AppBar position="sticky" >
+    <AppBar position="sticky">
       <StyledToolbar m={0}>
-        <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
-          Harshit Jajoria
+        <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' } }}>
+          Social Connect
         </Typography>
-        <Pets sx={{ display: { xs: "block", sm: "none" } }} />
+        <Face6 sx={{ display: { xs: 'block', sm: 'none' } }} />
         <Search>
-          <InputBase sx={{ width: '100%'}} placeholder="search..." />
+          <InputBase
+            sx={{
+              width: '100%',
+              color: 'black',
+            }}
+            placeholder="search..."
+          />
+
+          <SearchIcon color={'text.primary'} />
         </Search>
-        <Icons>
+        <Icons sx={{ display: { xs: 'none', sm: 'flex' } }}>
           <Badge badgeContent={123} color="error">
             <Mail />
           </Badge>
@@ -69,7 +79,10 @@ const Navbar = () => {
             onClick={(e) => issetOpen(true)}
           />
         </Icons>
-        <UserBox onClick={(e) => issetOpen(true)}>
+        <UserBox
+          onClick={(e) => issetOpen(true)}
+          sx={{ display: { xs: 'flex', sm: 'none' } }}
+        >
           <Avatar
             sx={{ width: 30, height: 30 }}
             src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -83,12 +96,12 @@ const Navbar = () => {
         open={isopen}
         onClose={(e) => issetOpen(false)}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: 'top',
+          horizontal: 'right',
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: 'top',
+          horizontal: 'right',
         }}
       >
         <MenuItem>Profile</MenuItem>
@@ -100,8 +113,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
 
 // import * as React from 'react';
 // import { styled, alpha } from '@mui/material/styles';
